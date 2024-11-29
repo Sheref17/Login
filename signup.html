@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ahmed Harraz">
+  <title>Login</title>
+
+
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+=
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+
+  <div class="container my-5 w-75 text-center">
+    <div class="login-container w-75 m-auto p-5">
+      <h1>Smart Login System</h1>
+
+
+      <input onblur="validationInput(this, 'msgName')" type="text" name="name" id="userName"
+        class="form-control my-3 rounded-1" placeholder="Enter your name">
+      <p id="msgName" class="text-danger m-3 d-none">Invalid input</p>
+
+      <input onblur="validationInput(this, 'msgEmail')" type="email" name="mail" id="userMail"
+        class="form-control my-3 rounded-1" placeholder="Enter your email">
+      <p id="msgEmail" class="text-danger m-3 d-none">Invalid input</p>
+
+      <input onblur="validationInput(this, 'msgPass')" type="password" name="pass" id="userPass"
+        class="form-control my-3 rounded-1" placeholder="Enter your password">
+      <p id="msgPass" class="text-danger m-3 d-none">Invalid input</p>
+
+      <p id="submitMessage" class="m-3 d-none">
+        
+      </p>
+      
+
+      <button onclick="signUp()" class="btn btn-outline-info w-100 my-3">Sign Up</button>
+      <p class="text-white">You have an account?
+        <a href="./index.html" class="text-decoration-none text-white">Sign in</a>
+      </p>
+
+    </div>
+  </div>
+
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
