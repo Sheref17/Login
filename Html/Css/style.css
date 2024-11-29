@@ -1,0 +1,57 @@
+
+:root {
+    --main-color: #24353f;
+  }
+  
+  body {
+    background-color: var(--main-color);
+    font-family: sans-serif;
+  }
+  
+  .main-color {
+    background-color: var(--main-color) !important;
+  }
+  
+  .login-container {
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+  }
+  
+  h1 {
+    color: #17a2b8;
+    font-size: 40px;
+    font-weight: 500;
+  }
+  
+  input {
+    background-color: transparent !important;
+    color: #fff !important;
+  
+    &::placeholder {
+      color: #fff !important;
+      opacity: 0.6 !important;
+    }
+  
+    &:focus {
+      box-shadow: 0 0 0 0 transparent !important;
+    }
+  }
+  
+  p a:hover {
+    text-decoration: underline !important;
+  }
+  
+
+  @media (max-width: 990px) {
+    .container {
+      width: 100% !important;
+    }
+  
+    .login-container {
+      width: 100% !important;
+    }
+  
+    .logout-btn {
+      width: 100%;
+    }
+  }
+  
