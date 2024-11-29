@@ -1,10 +1,10 @@
-
 var userName = document.getElementById("userName");
 var userMail = document.getElementById("userMail");
 var userPass = document.getElementById("userPass");
 var emailLogin = document.getElementById("userMail");
 var passLogin = document.getElementById("userPass");
 var users = [];
+
 
 if (localStorage.getItem("users")) {
   users = JSON.parse(localStorage.getItem("users"));
@@ -31,15 +31,18 @@ function validationInput(element, msgId) {
   regex = {
     msgName: /^[a-zA-Z][a-zA-Z0-9_-]{2,15}$/,
     msgEmail: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    msgPass: /^[a-zA-Z0-9!@#$%^&*]{8,}$/,
+    msgPass: /^[a-zA-Z0-9!@#$%^&*]{8,}$/
   };
 
   if (regex[msgId].test(element.value)) {
+    document.getElementById(msgId).classList.add('d-none');
     return true;
   } else {
+    document.getElementById(msgId).classList.remove('d-none');
     return false;
   }
 }
+
 
 function signUp() {
   if (
@@ -57,7 +60,7 @@ function signUp() {
       var user = {
         name: userName.value,
         mail: userMail.value,
-        pass: userPass.value,
+        pass: userPass.value
       };
 
       users.push(user);
@@ -68,14 +71,15 @@ function signUp() {
       status.classList.remove("d-none");
       status.classList.remove("text-danger");
       status.classList.add("text-success");
-      location.replace(
-        "file:///C:/Users/DELL/OneDrive/Desktop/login/index.html",
-        "_self"
-      );
+      
+      
+      setTimeout(function() {
+        location.replace("./index.html");
+      }, 1000);
     }
   } else {
     var status = document.getElementById("submitMessage");
-    status.innerHTML = "All inputs are required";
+    status.innerHTML = "All inputs are required and must be valid";
     status.classList.remove("d-none");
     status.classList.remove("text-success");
     status.classList.add("text-danger");
@@ -84,10 +88,10 @@ function signUp() {
 
 
 function logIn() {
-  var email = emailLogin.value;
-  var pass = passLogin.value;
+  var email = emailLogin.value.trim();  
+  var pass = passLogin.value.trim();   
 
-  if (email == "" || pass == " ") {
+  if (email == "" || pass == "") {
     var status = document.getElementById("submitMessage");
     status.innerHTML = "Enter all requirements";
     status.classList.remove("d-none");
@@ -97,16 +101,16 @@ function logIn() {
   for (var i = 0; i < users.length; i++) {
     if (
       users[i].mail.toLowerCase() == email.toLowerCase() &&
-      users[i].pass.toLowerCase() == pass.toLowerCase()
+      users[i].pass == pass 
     ) {
       localStorage.setItem("sessionUsername", users[i].name);
-      location.replace(
-        "file:///C:/Users/DELL/OneDrive/Desktop/login/home.html",
-        "_self"
-      );
+      
+     
+      location.replace("./home.html");
       return 0;
     }
   }
+
   var status = document.getElementById("submitMessage");
   status.innerHTML = "Incorrect Email or Password";
   status.classList.remove("d-none");
